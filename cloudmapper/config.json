@@ -1,0 +1,10 @@
+{ 
+    "accounts": [
+      {
+        "id": "[AWSのAccount ID]",
+        "name": "[識別名]",
+        "default": true
+      }
+    ],
+    "cidrs": {}
+  }
