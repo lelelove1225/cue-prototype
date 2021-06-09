@@ -7,7 +7,6 @@ services:
     ports:
       - 8000:8000
     environment:
-      - AWS_ACCESS_KEY_ID=AKIAU73IBTIGLHL3YSE5
-      - AWS_SECRET_ACCESS_KEY=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
+      #AWSのキー
     volumes:
       - ./config.json:/cloudmapper/config.json
