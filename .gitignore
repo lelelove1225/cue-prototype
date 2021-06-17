@@ -31,3 +31,6 @@ override.tf.json
 .DS_Store
 new_user_credentials.csv
 .env
+terraform/keys
+terraform/modules/dev.tfvars
+terraform/modules/variables.tf

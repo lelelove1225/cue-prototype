@@ -1,7 +1,18 @@
 terraform {
-  required_version = "0.14.8"
+  required_version = "~> 1.0.0"
 
   required_providers {
-    aws = "3.32.0"
+    aws = "3.45.0"
   }
+}
+
+provider "aws" {
+  access_key = var.aws_access_key
+  secret_key = var.aws_secret_key
+  region  = var.aws_region
+}
+
+resource "aws_key_pair" "unity-cloud" {
+  key_name   = "unity-cloud"
+  public_key = file("../keys/unity-cloud.pub")
 }

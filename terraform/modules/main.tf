@@ -1,5 +1,5 @@
 provider "aws" {
-  profile = "Unityterraform"
+  profile = "default"
   region  = "us-east-1"
 }
 
@@ -305,6 +305,7 @@ resource "aws_instance" "UnityEC2" {
   vpc_security_group_ids = [aws_security_group.alb.id]
   subnet_id              = aws_subnet.public.id
   instance_type          = "g4dn.xlarge"
+  key_name               = aws_key_pair.unity-cloud.id
   tags = {
     Name = "ec2TF"
   }
@@ -324,6 +325,9 @@ resource "aws_instance" "UnityEC2" {
 resource "aws_eip" "lb" {
   instance = aws_instance.UnityEC2.id
   //instance = aws_spot_instance_request.UnityEC2.spot_instance_id
+  tags = {
+    Name = "LBTF"
+  }
   vpc = true
 }
 
@@ -332,3 +336,11 @@ resource "aws_eip" "lb" {
 #   //instance = aws_spot_instance_request.UnityEC2_2.spot_instance_id
 #   vpc      = true
 # }
+
+resource "aws_eip" "unity_ec2" {
+  instance = aws_instance.UnityEC2.id
+  vpc      = true
+  tags = {
+    Name = "EC2EIP"
+  }
+}
